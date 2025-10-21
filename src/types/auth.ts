@@ -12,7 +12,7 @@ export interface AuthSession {
 export interface LoginRequest {
   email: string
   password: string
-  organization?: string
+  organizationId?: string
 }
 
 // Register request type
@@ -52,21 +52,31 @@ export interface JWTPayload {
   exp: number
 }
 
-// NextAuth configuration types
-export interface NextAuthConfig {
-  providers: any[]
-  callbacks: {
-    jwt: (token: any, user: any) => Promise<any>
-    session: (session: any, token: any) => Promise<any>
+// Better Auth configuration types
+export interface BetterAuthConfig {
+  baseURL: string
+  secret: string
+  database: {
+    provider: string
+    url: string
   }
-  pages: {
-    signIn: string
-    signUp: string
-    error: string
+  emailAndPassword: {
+    enabled: boolean
+    requireEmailVerification: boolean
+  }
+  socialProviders: {
+    google?: {
+      clientId: string
+      clientSecret: string
+    }
+    github?: {
+      clientId: string
+      clientSecret: string
+    }
   }
   session: {
-    strategy: 'jwt' | 'database'
-    maxAge: number
+    expiresIn: number
+    updateAge: number
   }
 }
 
@@ -104,4 +114,25 @@ export interface PasswordResetRequest {
 export interface PasswordResetConfirm {
   token: string
   password: string
+}
+
+// External API response types
+export interface ExternalAPIResponse<T = any> {
+  success: boolean
+  data?: T
+  error?: string
+  message?: string
+}
+
+export interface ExternalAuthResponse {
+  success: boolean
+  user: User
+  token: string
+  expiresIn: string
+  organization?: Organization
+}
+
+export interface ExternalUserResponse {
+  success: boolean
+  user: User
 }
