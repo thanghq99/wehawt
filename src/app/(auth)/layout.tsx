@@ -4,5 +4,5 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       auth layout
       {children}
     </section>
-  );
+  )
 }

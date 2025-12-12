@@ -1,5 +1,7 @@
-import Image from "next/image";
-import { ModeToggle } from "@/components/ModeToggle";
+"use client"
+
+import Image from "next/image"
+import { ModeToggle } from "@/components/ModeToggle"
 
 export default function Home() {
   return (
@@ -46,5 +48,5 @@ export default function Home() {
         </div>
       </main>
     </div>
-  );
+  )
 }

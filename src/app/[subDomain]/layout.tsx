@@ -4,5 +4,5 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       app client layout
       {children}
     </section>
-  );
+  )
 }
